@@ -114,7 +114,8 @@ val a1 = number / 10
  * прибыл на станцию назначения в h2 часов m2 минут того же дня (например в 13:01).
  * Определите время поезда в пути в минутах (в данном случае 216).
  */
-fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minutesArrive: Int): Int = (hoursArrive * 60 + minutesArrive) - (hoursDepart * 60 + minutesDepart)
+fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minutesArrive: Int): Int =
+    (hoursArrive * 60 + minutesArrive) - (hoursDepart * 60 + minutesDepart)
 
 /**
  * Простая
@@ -133,12 +134,13 @@ fun accountInThreeYears(initial: Int, percent: Int): Double {
  * Простая
  *
  * Пользователь задает целое трехзначное число (например, 478).
- * Необходимо вывести число, полученное из заданного перестановкой цифр в обратном порядке (например, 874).
+ * Необходим0о вывести число, полученное из заданного перестановкой цифр в обратном порядке (например, 874).
  */
 fun numberRevert(number: Int): Int {
-        val g1 = number % 10
-        val g2 = g1 % 10
-        val g3 = g2 % 10
-        return g1; g2 ;  g3
-
+        val c1 = number % 10
+        val g1 = number / 10
+        val c2 = g1 % 10
+        val g2 = g1 / 10
+        val c3 = g2 % 10
+        return c3; c2;c1
     }
