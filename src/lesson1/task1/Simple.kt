@@ -1,8 +1,8 @@
-@file:Suppress("UNUSED_PARAMETER")
+@file:Suppress()
 
 package lesson1.task1
 
-import lesson7.task1.top20Words
+
 import kotlin.math.*
 
 /**
@@ -78,8 +78,8 @@ fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int): Double =
  * Пользователь задает угол в градусах, минутах и секундах (например, 36 градусов 14 минут 35 секунд).
  * Вывести значение того же угла в радианах (например, 0.63256).
  */
-fun angleInRadian(deg: Int, min: Int, sec: Int): Double = deg * (PI / 180.0 ) + (min * 0.0166666667) * (PI / 180.0 ) + sec *0.0002778 * (PI / 180.0 )
-
+fun angleInRadian(deg: Int, min: Int, sec: Int): Double =
+    (deg * (PI / 180)) + ((min / 60) * (PI / 180)) + ((sec / 360) * (PI / 180))
 
 
 /**
@@ -88,7 +88,7 @@ fun angleInRadian(deg: Int, min: Int, sec: Int): Double = deg * (PI / 180.0 ) + 
  * Найти длину отрезка, соединяющего точки на плоскости с координатами (x1, y1) и (x2, y2).
  * Например, расстояние между (3, 0) и (0, 4) равно 5
  */
-fun trackLength(x1: Double, y1: Double, x2: Double, y2: Double): Double = sqrt( sqr(x2-x1 )+ sqr(y2-y1))
+fun trackLength(x1: Double, y1: Double, x2: Double, y2: Double): Double = sqrt(sqr(x2 - x1) + sqr(y2 - y1))
 
 /**
  * Простая
@@ -96,12 +96,11 @@ fun trackLength(x1: Double, y1: Double, x2: Double, y2: Double): Double = sqrt( 
  * Пользователь задает целое число, большее 100 (например, 3801).
  * Определить третью цифру справа в этом числе (в данном случае 8).
  */
-fun thirdDigit(number: Int): Int  {
-val a1 = number / 10
-    val a2 = a1/10
+fun thirdDigit(number: Int): Int {
+    val a1 = number / 10
+    val a2 = a1 / 10
     val a3 = a2 % 10
     return a3
-
 
 
 }
@@ -126,22 +125,24 @@ fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minute
  */
 fun accountInThreeYears(initial: Int, percent: Int): Double {
 
-    var x1 :Double  = (initial / 100.0) * percent + initial
-    var x2 :Double  = x1/100 * percent + x1
-    var x3: Double  = x2/100 * percent + x2
-    return x3 }
-    /**
+    var x1: Double = (initial / 100.0) * percent + initial
+    var x2: Double = x1 / 100 * percent + x1
+    var x3: Double = x2 / 100 * percent + x2
+    return x3
+}
+
+/**
  * Простая
  *
  * Пользователь задает целое трехзначное число (например, 478).
  * Необходим0о вывести число, полученное из заданного перестановкой цифр в обратном порядке (например, 874).
  */
 fun numberRevert(number: Int): Int {
-        val c1 = number % 10
-        val g1 = number / 10
-        val c2 = g1 % 10
-        val g2 = g1 / 10
-        val c3 = g2 % 10
-        return c1*100 + c2 * 10  + c3
+    val c1 = number % 10
+    val g1 = number / 10
+    val c2 = g1 % 10
+    val g2 = g1 / 10
+    val c3 = g2 % 10
+    return c1 * 100 + c2 * 10 + c3
 
-    }
+}
