@@ -63,12 +63,11 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
  * Мой возраст. Для заданного 0 < n < 200, рассматриваемого как возраст человека,
  * вернуть строку вида: «21 год», «32 года», «12 лет».
  */
-fun ageDescription(age: Int): String = when (age) {
-    1, 21, 31, 41, 51, 61, 71, 81, 91, 101, 121, 131, 141, 151, 161, 171, 181, 191 -> "год"
-    2, 3, 4, 22, 23, 24, 32, 33, 34, 42, 43, 44, 52, 53, 54, 62, 63, 64, 72, 73, 74, 82, 83, 84, 92, 93, 94, 102, 103,
-    104, 122, 123, 124, 132, 133, 134, 142, 143, 144, 152, 153, 154, 162, 163, 164, 172, 173, 174, 182, 183, 184, 192,
-    193, 194 -> "года"
-    else -> "лет"
+fun ageDescription(age: Int): String = when {
+    age % 10 == 1 && age % 100 != 11 -> "$age год"
+    age % 10 == 5 || age % 10 == 6 || age % 10 == 7 || age % 10 == 8 || age % 10 == 9 || age % 100 == 11
+            || age % 100 == 12 || age % 100 == 13 || age % 100 == 14 -> "$age лет"
+    else -> "$age года"
 }
 
 
@@ -99,33 +98,42 @@ fun whichRookThreatens(
     kingX: Int, kingY: Int,
     rookX1: Int, rookY1: Int,
     rookX2: Int, rookY2: Int
-): Int =
-    if (kingX != rookX1 && kingX != rookY1 && kingY != rookX1 && kingY != rookY1 &&
-        kingX != rookX2 && kingX != rookY2 && kingY != rookX2 && kingY != rookY2
-    ) 0 else if (kingX == rookX1 || kingX == rookY1 || kingY == rookX1 || kingY == rookY1 &&
-        kingX != rookX2 && kingX != rookY2 && kingY != rookX2 && kingY != rookY2
-    ) 1 else if (kingX != rookX1 && kingX != rookY1 && kingY != rookX1 && kingY != rookY1 &&
-        kingX == rookX2 || kingX == rookY2 || kingY == rookX2 || kingY == rookY2
-    ) 2 else 3
+): Int = when {
+    ((kingX == rookX1 || kingY == rookY1)
+            && (kingX == rookX2 || kingY == rookY2)) -> 3
+    ((kingX == rookX2) || (kingY == rookY2))
+    -> 2
+    ((kingX == rookX1) || (kingY == rookY1))
+    -> 1
 
+    else -> 0
+}
 
-
-    /**
-     * Простая
-     *
-     * На шахматной доске стоят черный король и белые ладья и слон
-     * (ладья бьет по горизонтали и вертикали, слон — по диагоналям).
-     * Проверить, есть ли угроза королю и если есть, то от кого именно.
-     * Вернуть 0, если угрозы нет, 1, если угроза только от ладьи, 2, если только от слона,
-     * и 3, если угроза есть и от ладьи и от слона.
-     * Считать, что ладья и слон не могут загораживать друг друга.
-     */
+/**
+ * Простая
+ *
+ * На шахматной доске стоят черный король и белые ладья и слон
+ * (ладья бьет по горизонтали и вертикали, слон — по диагоналям).
+ * Проверить, есть ли угроза королю и если есть, то от кого именно.
+ * Вернуть 0, если угрозы нет, 1, если угроза только от ладьи, 2, если только от слона,
+ * и 3, если угроза есть и от ладьи и от слона.
+ * Считать, что ладья и слон не могут загораживать друг друга.
+ */
 
 fun rookOrBishopThreatens(
     kingX: Int, kingY: Int,
     rookX: Int, rookY: Int,
     bishopX: Int, bishopY: Int
-): Int = TODO()
+): Int = when {
+    (((kingX - kingY == bishopX - bishopY) || (kingX + kingY == bishopX + bishopY)) && (kingX == rookX || kingY == rookY)) -> 3
+
+    ((kingX - kingY == bishopX - bishopY) || (kingX + kingY == bishopX + bishopY))
+            && (kingX != rookX || kingY != rookY) -> 2
+
+    (kingX == rookX || kingY == rookY)
+            && ((kingX - kingY != bishopX - bishopY) || (kingX + kingY != bishopX + bishopY)) -> 1
+    else -> 0
+}
 
 /**
  * Простая
