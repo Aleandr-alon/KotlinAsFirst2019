@@ -30,8 +30,8 @@ fun isNumberHappy(number: Int): Boolean = (number / 1000 + (number / 100) % 10 =
  * Определить, угрожают ли они друг другу. Вернуть true, если угрожают.
  * Считать, что ферзи не могут загораживать друг друга.
  */
-fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean = (y1 == y2 || x1 == x2 || y1 - y2 == x1 - x1 || x1 + x2
-        == y1 + y2)
+fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean = (y1 == y2 || x1 == x2 || y1 - y2 == x1 - x1
+        || x1 + x2 == y1 + y2)
 
 /**
  * Простая

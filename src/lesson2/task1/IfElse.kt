@@ -83,7 +83,16 @@ fun timeForHalfWay(
     t1: Double, v1: Double,
     t2: Double, v2: Double,
     t3: Double, v3: Double
-): Double = TODO()
+): Double {
+    val wayhalf = (t1 * v1 + t2 * v2 + t3 * v3) / 2
+    val s1 = v1 * t1
+    val s2 = v2 * t2
+    return when {
+        wayhalf < s1 -> wayhalf / v1
+        wayhalf > s1 && wayhalf <= (s1 + s2) -> t1 + (wayhalf - s1) / v2
+        else -> +t1 + t2 + (wayhalf - s1 - s2) / v3
+    }
+}
 
 
 /**
@@ -144,9 +153,9 @@ fun rookOrBishopThreatens(
  */
 fun triangleKind(a: Double, b: Double, c: Double): Int {
 
-    var max = maxOf(a, b, c)
-    var min = minOf(a, b, c)
-    var lastone = (a + b + c) - (min + max)
+    val max = maxOf(a, b, c)
+    val min = minOf(a, b, c)
+    val lastone = (a + b + c) - (min + max)
     return if (a + b > c && a + c > b && c + b > a)
         when {
             max * max < (min * min) + (lastone * lastone) -> 0
@@ -168,4 +177,3 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
  * Если пересечения нет, вернуть -1.
  */
 fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int = TODO()
-
