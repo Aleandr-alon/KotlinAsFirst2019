@@ -135,12 +135,12 @@ fun rookOrBishopThreatens(
     rookX: Int, rookY: Int,
     bishopX: Int, bishopY: Int
 ): Int {
-    val RookCheck = rookX == kingX || rookY == kingY
+    val rookCheck = rookX == kingX || rookY == kingY
     val bishopCheck = abs(kingX - bishopX) == abs(kingY - bishopY)
     return when {
-        RookCheck && bishopCheck -> 3
+        rookCheck && bishopCheck -> 3
         bishopCheck -> 2
-        RookCheck -> 1
+        rookCheck -> 1
         else -> 0
     }
 
@@ -158,11 +158,11 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
 
     val max = maxOf(a, b, c)
     val min = minOf(a, b, c)
-    val lastone = (a + b + c) - (min + max)
+    val lastOne = (a + b + c) - (min + max)
     return if (a + b > c && a + c > b && c + b > a)
         when {
-            max * max < (min * min) + (lastone * lastone) -> 0
-            max * max > min * min + lastone * lastone -> 2
+            max * max < (min * min) + (lastOne * lastOne) -> 0
+            max * max > min * min + lastOne * lastOne -> 2
 
             else -> 1
 
