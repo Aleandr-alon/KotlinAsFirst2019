@@ -3,7 +3,9 @@
 package lesson2.task2
 
 import lesson1.task1.sqr
-import kotlin.math.pow
+import kotlin.math.abs
+import kotlin.math.max
+
 import kotlin.math.sqrt
 
 /**
@@ -30,8 +32,11 @@ fun isNumberHappy(number: Int): Boolean = (number / 1000 + (number / 100) % 10 =
  * Определить, угрожают ли они друг другу. Вернуть true, если угрожают.
  * Считать, что ферзи не могут загораживать друг друга.
  */
-fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean = (y1 == y2 || x1 == x2 || y1 - y2 == x1 - x1
-        || x1 + x2 == y1 + y2)
+fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean = (y1 == y2 || x1 == x2 || abs(x1 - y1)
+        == abs(
+    x2 - y2
+))
+
 
 /**
  * Простая
@@ -66,5 +71,13 @@ fun circleInside(
  * кирпич 4 х 4 х 4 пройдёт через отверстие 4 х 4.
  * Вернуть true, если кирпич пройдёт
  */
-fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean = (r >= a && s >= b)
-        || (r >= b && s >= a) || r >= a && s >= c || (r >= c && s >= a) || (r >= b && s >= c) || (r >= c && s >= b)
+fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
+    val minHole = minOf(r, s)
+    val maxHole = maxOf(r, s)
+    val maxBrick = maxOf(a, b, c)
+    val minBrick = minOf(a, b, c)
+    val lastone = a + b + c - (maxBrick + minBrick)
+    return (lastone <= maxHole) && (minBrick <= minHole)
+
+
+}
