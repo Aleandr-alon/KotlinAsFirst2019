@@ -70,7 +70,7 @@ fun countSubstrings(inputName: String, substrings: List<String>): Map<String, In
  *
  */
 fun sibilants(inputName: String, outputName: String) {
-    val preletters = setOf<Char>('ж', 'ч', 'ш', 'щ', 'Ж', 'Ч', 'Ш', 'Щ')
+    val preletters = setOf<Char>('ж', 'ш', 'ч', 'щ', 'Ж', 'Ч', 'Ш', 'Щ')
     val mistakes = mapOf<Char, Char>(
         'Ы' to 'И',
         'Я' to 'А',
