@@ -198,8 +198,9 @@ fun polynom(p: List<Int>, x: Int): Int {
 fun accumulate(list: MutableList<Int>): MutableList<Int> {
     list
     if (list.isEmpty()) list else
-        for (i in 1 until list.size)
+        for (i in 1 until list.size) {
             list[i] = list[i] + list[i - 1]
+        }
     return list
 }
 
