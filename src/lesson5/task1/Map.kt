@@ -230,7 +230,7 @@ fun extractRepeats(list: List<String>): Map<String, Int> {
     val map = mutableMapOf<String, Int>()
     for (element in list)
         if (element in map) map[element] = map[element]!! + 1
-    else map[element] = 1
+        else map[element] = 1
     return map.filterValues { it >= 2 }
 
 }

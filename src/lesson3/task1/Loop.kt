@@ -91,15 +91,15 @@ fun digitNumber(n: Int): Int {
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
  */
 fun fib(n: Int): Int {
+    if (n == 1 || n == 2) return 1
     var quantity = 0
     var fibone = 1
     var fibtwo = 1
-    if (n == 1 || n == 2) return 1 else
-        for (i in (3..n)) {
-            quantity = fibone + fibtwo
-            fibone = fibtwo
-            fibtwo = quantity
-        }
+    for (i in (3..n)) {
+        quantity = fibone + fibtwo
+        fibone = fibtwo
+        fibtwo = quantity
+    }
     return quantity
 }
 
@@ -109,17 +109,17 @@ fun fib(n: Int): Int {
  * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
  */
-fun lcm(m: Int, n: Int): Int = (m * n) / Evklid(m, n)
+fun lcm(m: Int, n: Int): Int = (m * n) / evklid(m, n)
 
 
-fun Evklid(a: Int, b: Int): Int {
-    var whiskey = a
-    var cola = b
-    while (whiskey != 0 && cola != 0) {
-        if (whiskey >= cola) whiskey %= cola
-        else cola %= whiskey
+fun evklid(a: Int, b: Int): Int {
+    var firsthelp = a
+    var secondhelp = b
+    while (firsthelp != 0 && secondhelp != 0) {
+        if (firsthelp >= secondhelp) firsthelp %= secondhelp
+        else secondhelp %= firsthelp
     }
-    return whiskey + cola
+    return firsthelp + secondhelp
 }
 
 /**
@@ -130,7 +130,6 @@ fun Evklid(a: Int, b: Int): Int {
 fun minDivisor(n: Int): Int {
     var checker = 2
     while (n % checker != 0) {
-
         checker += 1
     }
     return checker
@@ -154,13 +153,13 @@ fun maxDivisor(n: Int): Int = n / minDivisor(n)
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
 fun isCoPrime(m: Int, n: Int): Boolean {
-    var gar = n
-    var dar = m
-    while (gar != dar)
-        if (gar > dar) gar -= dar
-        else dar -= gar
+    var n1 = n
+    var m1 = m
+    while (n1 != m1)
+        if (n1 > m1) n1 -= m1
+        else m1 -= n1
 
-    return gar == 1
+    return n1 == 1
 
 }
 
@@ -172,10 +171,10 @@ fun isCoPrime(m: Int, n: Int): Boolean {
  * Например, для интервала 21..28 21 <= 5*5 <= 28, а для интервала 51..61 квадрата не существует.
  */
 fun squareBetweenExists(m: Int, n: Int): Boolean {
-    var tequila = 1
+    var result = 1
     for (i in sqrt(m.toDouble()).toInt()..sqrt(n.toDouble()).toInt()) {
-        tequila = i
-        if (tequila * tequila in m..n) return true
+        result = i
+        if (result * result in m..n) return true
     }
     return false
 }
@@ -272,13 +271,13 @@ fun isPalindrome(n: Int): Boolean = (revert(n) == n)
  */
 fun hasDifferentDigits(n: Int): Boolean {
 
-    var tuborg = n
+    var helper = n
     var g1 = 1
     var g2 = 1
-    while (tuborg > 0) {
-        g1 = tuborg % 10
-        g2 = (tuborg / 10) % 10
-        tuborg /= 10
+    while (helper > 9) {
+        g1 = helper % 10
+        g2 = (helper / 10) % 10
+        helper /= 10
         if (g1 != g2) return true
     }
     return false
@@ -294,7 +293,6 @@ fun hasDifferentDigits(n: Int): Boolean {
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun squareSequenceDigit(n: Int): Int = TODO()
-
 
 
 /**

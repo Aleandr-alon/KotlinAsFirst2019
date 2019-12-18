@@ -5,6 +5,7 @@ package lesson4.task1
 import lesson1.task1.discriminant
 import lesson1.task1.sqr
 import lesson3.task1.factorial
+import lesson3.task1.minDivisor
 import kotlin.math.sqrt
 
 /**
@@ -196,11 +197,9 @@ fun polynom(p: List<Int>, x: Int): Int {
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
 fun accumulate(list: MutableList<Int>): MutableList<Int> {
-    list
-    if (list.isEmpty()) list else
-        for (i in 1 until list.size) {
-            list[i] = list[i] + list[i - 1]
-        }
+    for (i in 1 until list.size) {
+        list[i] = list[i] + list[i - 1]
+    }
     return list
 }
 
@@ -220,18 +219,10 @@ fun factorize(n: Int): List<Int> {
         eldorado.add(minDivisor(pif))
         pif /= minDivisor(pif)
     }
-    return eldorado.sorted()
+    return eldorado
 
 }
 
-fun minDivisor(n: Int): Int {
-    var checker = 2
-    while (n % checker != 0) {
-
-        checker += 1
-    }
-    return checker
-}
 
 /**
  * Сложная
@@ -286,7 +277,7 @@ fun decimal(digits: List<Int>, base: Int): Int {
     var lock = 1
     var ansewer = 0
     for (i in digits.reversed()) {
-        ansewer += i *lock
+        ansewer += i * lock
         lock *= base
 
     }
