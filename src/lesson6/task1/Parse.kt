@@ -73,7 +73,10 @@ fun main() {
  * входными данными.
  */
 fun dateStrToDigit(str: String): String {
+
     val strini = str.split(" ")
+    if (strini.size > 6 )
+    return ""
     if (strini.size != 3)
         return ""
     val day = strini[0].toInt()
