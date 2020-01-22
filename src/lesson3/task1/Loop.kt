@@ -93,12 +93,12 @@ fun digitNumber(n: Int): Int {
 fun fib(n: Int): Int {
     if (n == 1 || n == 2) return 1
     var quantity = 0
-    var fibone = 1
-    var fibtwo = 1
+    var fibOne = 1
+    var fibTwo = 1
     for (i in (3..n)) {
-        quantity = fibone + fibtwo
-        fibone = fibtwo
-        fibtwo = quantity
+        quantity = fibOne + fibTwo
+        fibOne = fibTwo
+        fibTwo = quantity
     }
     return quantity
 }
@@ -113,13 +113,13 @@ fun lcm(m: Int, n: Int): Int = (m * n) / evklid(m, n)
 
 
 fun evklid(a: Int, b: Int): Int {
-    var firsthelp = a
-    var secondhelp = b
-    while (firsthelp != 0 && secondhelp != 0) {
-        if (firsthelp >= secondhelp) firsthelp %= secondhelp
-        else secondhelp %= firsthelp
+    var firstHelp = a
+    var secondHelp = b
+    while (firstHelp != 0 && secondHelp != 0) {
+        if (firstHelp >= secondHelp) firstHelp %= secondHelp
+        else secondHelp %= firstHelp
     }
-    return firsthelp + secondhelp
+    return firstHelp + secondHelp
 }
 
 /**
@@ -152,16 +152,10 @@ fun maxDivisor(n: Int): Int = n / minDivisor(n)
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean {
-    var n1 = n
-    var m1 = m
-    while (n1 != m1)
-        if (n1 > m1) n1 -= m1
-        else m1 -= n1
+fun isCoPrime(m: Int, n: Int): Boolean = (m * n) / lcm(m, n) == 1
 
-    return n1 == 1
 
-}
+
 
 /**
  * Простая

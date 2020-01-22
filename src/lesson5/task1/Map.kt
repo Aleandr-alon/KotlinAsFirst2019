@@ -141,13 +141,13 @@ fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>): Unit {
  * т. е. whoAreInBoth(listOf("Марат", "Семён, "Марат"), listOf("Марат", "Марат")) == listOf("Марат")
  */
 fun whoAreInBoth(a: List<String>, b: List<String>): List<String> {
-    var forsafe = mutableListOf<String>()
-    if (a.isEmpty() && b.isEmpty()) return forsafe
-    var otvit = mutableListOf<String>()
+    var forSafe = mutableListOf<String>()
+    var result = mutableListOf<String>()
     a.forEach { i ->
-        if (b.contains(i)) otvit.add(i)
+        if (b.contains(i)) result
+            .add(i)
     }
-    return otvit
+    return result
 }
 
 /**
