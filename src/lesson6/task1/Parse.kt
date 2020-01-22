@@ -73,10 +73,10 @@ fun main() {
  * входными данными.
  */
 fun dateStrToDigit(str: String): String {
-
+    if (!str.matches(Regex("""\d{1,2} [а-я]+ \d+"""))) return ""
     val strini = str.split(" ")
-    if (strini.size > 6 )
-    return ""
+    if (strini.size > 6)
+        return ""
     if (strini.size != 3)
         return ""
     val day = strini[0].toInt()
