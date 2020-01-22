@@ -3,8 +3,6 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
-import lesson1.task1.sqr
-import lesson3.task1.factorial
 import lesson3.task1.minDivisor
 import kotlin.math.sqrt
 
@@ -212,7 +210,7 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
  * Множители в списке должны располагаться по возрастанию.
  */
 fun factorize(n: Int): List<Int> {
-    var eldorado = mutableListOf<Int>()
+    val eldorado = mutableListOf<Int>()
 
     var pif = n
     while (pif > 1) {
@@ -241,7 +239,7 @@ fun factorizeToString(n: Int): String = factorize(n).joinToString(separator = "*
  * например: n = 100, base = 4 -> (1, 2, 1, 0) или n = 250, base = 14 -> (1, 3, 12)
  */
 fun convert(n: Int, base: Int): List<Int> {
-    var morpheus = mutableListOf<Int>()
+    val morpheus = mutableListOf<Int>()
     if (n == 0 ) morpheus.add(0)
     var neo = n
     var oracle = 0
