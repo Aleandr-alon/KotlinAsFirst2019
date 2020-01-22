@@ -128,9 +128,9 @@ fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean {
  *     -> a changes to mutableMapOf() aka becomes empty
  */
 fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>): Unit {
-    for ((key, value) in b) {
-        if ((a[key] == b[key]) && (a[value] == b[value])) a.remove(key)
-    }
+    for ((key, value) in b)
+        if ((key in a) && (value == a[key])) a.remove(key)
+
 }
 
 /**
@@ -140,15 +140,7 @@ fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>): Unit {
  * В выходном списке не должно быть повторяюихся элементов,
  * т. е. whoAreInBoth(listOf("Марат", "Семён, "Марат"), listOf("Марат", "Марат")) == listOf("Марат")
  */
-fun whoAreInBoth(a: List<String>, b: List<String>): List<String> {
-    var forSafe = mutableListOf<String>()
-    var result = mutableListOf<String>()
-    a.forEach { i ->
-        if (b.contains(i)) result
-            .add(i)
-    }
-    return result
-}
+fun whoAreInBoth(a: List<String>, b: List<String>): List<String> = (a.intersect(b).toList())
 
 /**
  * Средняя
