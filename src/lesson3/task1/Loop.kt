@@ -3,8 +3,6 @@
 package lesson3.task1
 
 
-import lesson1.task1.sqr
-import lesson4.task1.sqRoots
 import kotlin.math.sqrt
 
 /**
@@ -128,11 +126,13 @@ fun evklid(a: Int, b: Int): Int {
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
 fun minDivisor(n: Int): Int {
-    var checker = 2
-    while (n % checker != 0) {
-        checker += 1
-    }
-    return checker
+    var answer = 0
+    for (i in 2..n)
+        if (n % i == 0) {
+            answer = i
+            break
+        }
+    return answer
 
 
 }
@@ -153,8 +153,6 @@ fun maxDivisor(n: Int): Int = n / minDivisor(n)
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
 fun isCoPrime(m: Int, n: Int): Boolean = (m * n) / lcm(m, n) == 1
-
-
 
 
 /**

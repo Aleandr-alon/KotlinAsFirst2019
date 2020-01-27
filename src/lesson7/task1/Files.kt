@@ -69,23 +69,24 @@ fun countSubstrings(inputName: String, substrings: List<String>): Map<String, In
  * Исключения (жюри, брошюра, парашют) в рамках данного задания обрабатывать не нужно
  *
  */
+val preLetters = setOf<Char>('ж', 'ш', 'ч', 'щ', 'Ж', 'Ч', 'Ш', 'Щ')
+
+val mistakes = mapOf<Char, Char>(
+    'Ы' to 'И',
+    'Я' to 'А',
+    'Ю' to 'У',
+    'ы' to 'и',
+    'я' to 'а',
+    'ю' to 'у',
+    'Ю' to 'У'
+)
 fun sibilants(inputName: String, outputName: String) {
-    val preletters = setOf<Char>('ж', 'ш', 'ч', 'щ', 'Ж', 'Ч', 'Ш', 'Щ')
-    val mistakes = mapOf<Char, Char>(
-        'Ы' to 'И',
-        'Я' to 'А',
-        'Ю' to 'У',
-        'ы' to 'и',
-        'я' to 'а',
-        'ю' to 'у',
-        'Ю' to 'У'
-    )
     val read = File(outputName).bufferedWriter().use {
         for (line in File(inputName).readLines()) {
             var linesup = line
             val support = line.toMutableList()
             for (i in 0..line.length - 2) {
-                if (line[i] in preletters && line[i + 1] in mistakes.keys) {
+                if (line[i] in preLetters && line[i + 1] in mistakes.keys) {
                     support[i + 1] = mistakes[line[i + 1]] ?: error("")
                     linesup = support.joinToString("")
                 }

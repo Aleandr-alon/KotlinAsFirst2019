@@ -211,7 +211,6 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
  */
 fun factorize(n: Int): List<Int> {
     val eldorado = mutableListOf<Int>()
-
     var pif = n
     while (pif > 1) {
         eldorado.add(minDivisor(pif))
