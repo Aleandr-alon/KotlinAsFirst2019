@@ -80,6 +80,7 @@ val mistakes = mapOf<Char, Char>(
     'ю' to 'у',
     'Ю' to 'У'
 )
+
 fun sibilants(inputName: String, outputName: String) {
     val read = File(outputName).bufferedWriter().use {
         for (line in File(inputName).readLines()) {

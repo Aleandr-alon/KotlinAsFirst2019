@@ -239,7 +239,7 @@ fun factorizeToString(n: Int): String = factorize(n).joinToString(separator = "*
  */
 fun convert(n: Int, base: Int): List<Int> {
     val morpheus = mutableListOf<Int>()
-    if (n == 0 ) morpheus.add(0)
+    if (n == 0) morpheus.add(0)
     var neo = n
     var oracle = 0
     while (neo != 0) {
