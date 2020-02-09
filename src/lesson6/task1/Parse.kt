@@ -115,26 +115,29 @@ fun dateDigitToStr(digital: String): String {
     val strini = digital.split(".")
     if (strini.size != 3)
         return ""
-    val year = strini[2]
-    val month = when (strini[1]) {
-        "01" -> "января"
-        "02" -> "февраля"
-        "03" -> "марта"
-        "04" -> "апреля"
-        "05" -> "мая"
-        "06" -> "июня"
-        "07" -> "июля"
-        "08" -> "августа"
-        "09" -> "сентября"
-        "10" -> "октября"
-        "11" -> "ноября"
-        "12" -> "декабря"
-        else -> return ""
+    return try {
+        val year = strini[2]
+        val month = when (strini[1]) {
+            "01" -> "января"
+            "02" -> "февраля"
+            "03" -> "марта"
+            "04" -> "апреля"
+            "05" -> "мая"
+            "06" -> "июня"
+            "07" -> "июля"
+            "08" -> "августа"
+            "09" -> "сентября"
+            "10" -> "октября"
+            "11" -> "ноября"
+            "12" -> "декабря"
+            else -> return ""
+        }
+        val day = strini[0].toInt()
+        return if ((daysInMonth(strini[1].toInt(), strini[2].toInt()) < day)) ""
+        else String.format("%d %s %s", day, month, year)
+    } catch (e: Exception) {
+        ""
     }
-    val day = strini[0].toInt()
-    return if ((daysInMonth(strini[1].toInt(), strini[2].toInt()) < day)) ""
-    else String.format("%d %s %s", day, month, year)
-
 }
 
 /**

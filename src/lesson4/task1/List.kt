@@ -210,13 +210,13 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
  * Множители в списке должны располагаться по возрастанию.
  */
 fun factorize(n: Int): List<Int> {
-    val eldorado = mutableListOf<Int>()
-    var pif = n
-    while (pif > 1) {
-        eldorado.add(minDivisor(pif))
-        pif /= minDivisor(pif)
+    val list = mutableListOf<Int>()
+    var n1 = n
+    while (n1 > 1) {
+        list.add(minDivisor(n1))
+        n1 /= minDivisor(n1)
     }
-    return eldorado
+    return list
 
 }
 
@@ -238,16 +238,16 @@ fun factorizeToString(n: Int): String = factorize(n).joinToString(separator = "*
  * например: n = 100, base = 4 -> (1, 2, 1, 0) или n = 250, base = 14 -> (1, 3, 12)
  */
 fun convert(n: Int, base: Int): List<Int> {
-    val morpheus = mutableListOf<Int>()
-    if (n == 0) morpheus.add(0)
-    var neo = n
-    var oracle = 0
-    while (neo != 0) {
-        oracle = neo % base
-        neo /= base
-        morpheus.add(oracle)
+    val list = mutableListOf<Int>()
+    if (n == 0) list.add(0)
+    var n1 = n
+    var help = 1
+    while (n1 != 0) {
+        help = n1 % base
+        n1 /= base
+        list.add(help)
     }
-    return morpheus.reversed()
+    return list.reversed()
 }
 
 /**

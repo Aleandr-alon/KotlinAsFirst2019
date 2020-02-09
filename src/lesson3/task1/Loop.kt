@@ -152,7 +152,7 @@ fun maxDivisor(n: Int): Int = n / minDivisor(n)
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean = (m * n) / lcm(m, n) == 1
+fun isCoPrime(m: Int, n: Int): Boolean = (m / lcm(m, n)) * n == 1
 
 
 /**
@@ -163,7 +163,7 @@ fun isCoPrime(m: Int, n: Int): Boolean = (m * n) / lcm(m, n) == 1
  * Например, для интервала 21..28 21 <= 5*5 <= 28, а для интервала 51..61 квадрата не существует.
  */
 fun squareBetweenExists(m: Int, n: Int): Boolean {
-    var result = 1
+    var result: Any
     for (i in sqrt(m.toDouble()).toInt()..sqrt(n.toDouble()).toInt()) {
         result = i
         if (result * result in m..n) return true
@@ -189,11 +189,11 @@ fun squareBetweenExists(m: Int, n: Int): Boolean {
  */
 fun collatzSteps(x: Int): Int {
     var counter = 0
-    var xo = x
-    while (xo != 1) {
-        if (xo % 2 == 0)
-            xo /= 2
-        else xo = 3 * xo + 1
+    var x1 = x
+    while (x1 != 1) {
+        if (x1 % 2 == 0)
+            x1 /= 2
+        else x1 = 3 * x1 + 1
         counter += 1
     }
     return counter
@@ -229,16 +229,16 @@ fun cos(x: Double, eps: Double): Double = TODO()
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun revert(n: Int): Int {
-    var olmeca = n
-    var warsteiner = 0
-    while (olmeca != 0) {
-        warsteiner *= 10
-        warsteiner += olmeca % 10
+    var n1 = n
+    var result = 0
+    while (n1 != 0) {
+        result *= 10
+        result += n1 % 10
 
-        olmeca /= 10
+        n1 /= 10
 
     }
-    return warsteiner
+    return result
 }
 
 
